@@ -27,14 +27,10 @@
 #include "imx335_isp_param_conf.h"
 #include "zephyr/drivers/video-controls.h"
 #include "zephyr/drivers/video.h"
+#include "zephyr/drivers/video/stm32_dcmipp.h"
 
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(isp_wrapper);
-
-extern void stm32_dcmipp_isp_vsync_update(DCMIPP_HandleTypeDef *hdcmipp, uint32_t Pipe);
-extern int stm32_dcmipp_isp_init(DCMIPP_HandleTypeDef *hdcmipp, const struct device *sensor);
-extern int stm32_dcmipp_isp_start(void);
-extern int stm32_dcmipp_isp_stop(void);
 
 static const struct device *sensor_i;
 static ISP_HandleTypeDef isp_i;
