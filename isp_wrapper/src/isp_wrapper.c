@@ -68,8 +68,6 @@ static ISP_StatusTypeDef isp_SetSensorGain(uint32_t Instance, int32_t Gain)
   struct video_control ctrl;
   int ret;
 
-  assert(sensor_i);
-
   ctrl.id = VIDEO_CID_ANALOGUE_GAIN;
   ctrl.val = Gain;
   ret = video_set_ctrl(sensor_i, &ctrl);
@@ -96,8 +94,6 @@ static ISP_StatusTypeDef isp_SetSensorExposure(uint32_t Instance, int32_t Exposu
 {
   struct video_control ctrl;
   int ret;
-
-  assert(sensor_i);
 
   ctrl.id = VIDEO_CID_EXPOSURE;
   ctrl.val = Exposure / IMX335_1H_PERIOD_USEC;
@@ -147,6 +143,8 @@ int stm32_dcmipp_isp_init(DCMIPP_HandleTypeDef *hdcmipp, const struct device *se
 {
   k_tid_t isp_tid;
   int res;
+
+  assert(sensor);
 
   sensor_i = sensor;
   res = ISP_Init(&isp_i, hdcmipp, 0, &isp_helpers, &ISP_IQParamCacheInit_IMX335);
