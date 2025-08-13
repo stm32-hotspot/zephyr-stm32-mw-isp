@@ -174,8 +174,6 @@ int stm32_dcmipp_isp_start(void)
 
 int stm32_dcmipp_isp_stop(void)
 {
-  assert(0);
-
   return 0;
 }
 
