@@ -25,6 +25,8 @@
 
 #include "isp_api.h"
 
+#include "isp_wrapper.h"
+
 #include CONFIG_STM32_MW_ISP_CONF_FILE
 #include CONFIG_STM32_MW_ISP_SENSOR_CONF_FILE
 
@@ -187,4 +189,9 @@ void stm32_dcmipp_isp_vsync_update(DCMIPP_HandleTypeDef *hdcmipp, uint32_t Pipe)
     return ;
 
   k_sem_give(&isp_sem);
+}
+
+ISP_HandleTypeDef *ISP_Wrapper_GetHandler(void)
+{
+  return &isp_i;
 }
